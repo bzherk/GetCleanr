@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Getcleanr – Calgary Cleaning Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --teal: #1D9E75;
+    --teal-light: #E1F5EE;
+    --teal-dark: #085041;
+    --cream: #F9F7F2;
+    --charcoal: #2C2C2A;
+    --mid: #5F5E5A;
+    --soft: #B4B2A9;
+    --white: #ffffff;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--charcoal); overflow-x: hidden; }
+
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(249,247,242,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 2.5rem;
+  }
+  .logo { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 700; color: var(--teal-dark); letter-spacing: -0.5px; }
+  .logo span { color: var(--teal); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { text-decoration: none; font-size: 0.9rem; font-weight: 500; color: var(--mid); transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta { background: var(--teal); color: white; border: none; padding: 0.6rem 1.4rem; border-radius: 50px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: background 0.2s, transform 0.15s; }
+  .nav-cta:hover { background: var(--teal-dark); transform: translateY(-1px); }
+
+  .hero {
+    min-height: 92vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 4rem 2.5rem 4rem 5rem;
+    gap: 3rem;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -80px; right: -80px;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: var(--teal-light);
+    z-index: 0;
+    opacity: 0.6;
+  }
+  .hero-text { position: relative; z-index: 1; animation: fadeUp 0.8s ease both; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--teal-light); color: var(--teal-dark);
+    font-size: 0.78rem; font-weight: 500; padding: 0.35rem 0.9rem;
+    border-radius: 50px; margin-bottom: 1.5rem;
+  }
+  .hero-badge::before { content: '✦'; font-size: 0.65rem; }
+  h1 { font-family: 'Fraunces', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; line-height: 1.1; color: var(--charcoal); margin-bottom: 1.25rem; }
+  h1 em { font-style: normal; color: var(--teal); }
+  .hero p { font-size: 1.05rem; color: var(--mid); line-height: 1.7; max-width: 440px; margin-bottom: 2rem; font-weight: 300; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary { background: var(--teal); color: white; padding: 0.85rem 2rem; border-radius: 50px; border: none; font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 500; cursor: pointer; transition: all 0.2s; }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-2px); }
+  .btn-secondary { background: transparent; color: var(--charcoal); padding: 0.85rem 2rem; border-radius: 50px; border: 1.5px solid rgba(0,0,0,0.15); font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 500; cursor: pointer; transition: all 0.2s; }
+  .btn-secondary:hover { border-color: var(--teal); color: var(--teal); }
+
+  .hero-visual { position: relative; z-index: 1; animation: fadeUp 0.8s 0.15s ease both; }
+  .hero-card-main {
+    background: white; border-radius: 24px; padding: 2rem;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+  }
+  .hero-img-placeholder {
+    width: 100%; height: 260px; border-radius: 16px;
+    background: linear-gradient(135deg, var(--teal-light) 0%, #9FE1CB 100%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden; margin-bottom: 1.25rem;
+  }
+  .sparkle { font-size: 4rem; }
+  .hero-card-label { font-size: 0.8rem; color: var(--soft); font-weight: 500; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+  .hero-card-title { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 600; color: var(--charcoal); margin-bottom: 0.4rem; }
+  .hero-card-sub { font-size: 0.9rem; color: var(--mid); }
+  .hero-stats { display: flex; gap: 1.5rem; margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid rgba(0,0,0,0.06); }
+  .stat { text-align: center; }
+  .stat-num { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 700; color: var(--teal); }
+  .stat-label { font-size: 0.75rem; color: var(--soft); }
+
+  .trust-strip {
+    background: var(--charcoal); color: white;
+    display: flex; align-items: center; justify-content: center;
+    gap: 3rem; padding: 1.25rem 2.5rem; flex-wrap: wrap;
+  }
+  .trust-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; font-weight: 400; color: rgba(255,255,255,0.7); }
+  .trust-item strong { color: white; }
+
+  section { padding: 5rem 2.5rem; }
+  .section-tag { font-size: 0.8rem; font-weight: 500; color: var(--teal); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.75rem; }
+  h2 { font-family: 'Fraunces', serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 700; color: var(--charcoal); line-height: 1.15; margin-bottom: 1rem; }
+  .section-sub { font-size: 1rem; color: var(--mid); max-width: 520px; line-height: 1.7; font-weight: 300; }
+
+  .services { background: white; }
+  .services-inner { max-width: 1100px; margin: 0 auto; }
+  .services-header { text-align: center; margin-bottom: 3rem; }
+  .services-header .section-sub { margin: 0 auto; }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+  .service-card {
+    border: 1px solid rgba(0,0,0,0.07); border-radius: 20px; padding: 2rem;
+    transition: all 0.25s; cursor: default; position: relative; overflow: hidden;
+  }
+  .service-card::before { content: ''; position: absolute; inset: 0; background: var(--teal-light); opacity: 0; transition: opacity 0.25s; z-index: 0; }
+  .service-card:hover::before { opacity: 1; }
+  .service-card:hover { border-color: var(--teal); transform: translateY(-4px); }
+  .service-card > * { position: relative; z-index: 1; }
+  .service-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+  .service-card h3 { font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--charcoal); }
+  .service-card p { font-size: 0.9rem; color: var(--mid); line-height: 1.6; font-weight: 300; }
+  .service-tag { display: inline-block; margin-top: 1rem; font-size: 0.75rem; font-weight: 500; color: var(--teal); background: var(--teal-light); padding: 0.25rem 0.75rem; border-radius: 50px; }
+
+  .why { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .why-list { list-style: none; margin-top: 1.5rem; }
+  .why-item { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+  .why-dot { width: 32px; height: 32px; border-radius: 50%; background: var(--teal); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: white; font-size: 0.85rem; font-weight: 600; }
+  .why-text h4 { font-weight: 500; font-size: 0.95rem; margin-bottom: 0.2rem; color: var(--charcoal); }
+  .why-text p { font-size: 0.88rem; color: var(--mid); line-height: 1.5; font-weight: 300; }
+  .why-visual { background: var(--charcoal); border-radius: 24px; padding: 2.5rem; color: white; }
+  .why-visual-title { font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 600; margin-bottom: 1.75rem; }
+  .review-card { background: rgba(255,255,255,0.08); border-radius: 14px; padding: 1.25rem; margin-bottom: 1rem; }
+  .review-stars { color: #FACC15; font-size: 0.85rem; margin-bottom: 0.5rem; }
+  .review-text { font-size: 0.88rem; color: rgba(255,255,255,0.8); line-height: 1.6; font-weight: 300; }
+  .review-name { font-size: 0.78rem; color: rgba(255,255,255,0.45); margin-top: 0.5rem; }
+
+  .pricing { background: var(--cream); }
+  .pricing-inner { max-width: 1000px; margin: 0 auto; }
+  .pricing-header { text-align: center; margin-bottom: 3rem; }
+  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .pricing-card { background: white; border: 1px solid rgba(0,0,0,0.07); border-radius: 20px; padding: 2rem; transition: transform 0.2s; }
+  .pricing-card:hover { transform: translateY(-4px); }
+  .pricing-card.featured { border: 2px solid var(--teal); position: relative; }
+  .featured-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--teal); color: white; font-size: 0.72rem; font-weight: 500; padding: 0.3rem 1rem; border-radius: 50px; white-space: nowrap; }
+  .plan-name { font-size: 0.8rem; font-weight: 500; color: var(--soft); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+  .plan-price { font-family: 'Fraunces', serif; font-size: 2.2rem; font-weight: 700; color: var(--charcoal); }
+  .plan-price span { font-size: 1rem; font-weight: 400; color: var(--soft); }
+  .plan-desc { font-size: 0.85rem; color: var(--mid); margin: 0.5rem 0 1.25rem; font-weight: 300; }
+  .plan-features { list-style: none; margin-bottom: 1.75rem; }
+  .plan-features li { font-size: 0.88rem; color: var(--mid); padding: 0.4rem 0; display: flex; gap: 0.6rem; align-items: center; border-bottom: 1px solid rgba(0,0,0,0.04); font-weight: 300; }
+  .plan-features li::before { content: '✓'; color: var(--teal); font-weight: 600; flex-shrink: 0; }
+  .plan-btn { width: 100%; padding: 0.8rem; border-radius: 50px; border: 1.5px solid var(--teal); background: transparent; color: var(--teal); font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: all 0.2s; }
+  .plan-btn:hover, .pricing-card.featured .plan-btn { background: var(--teal); color: white; }
+
+  .contact { background: var(--charcoal); color: white; padding: 6rem 2.5rem; }
+  .contact-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+  .contact h2 { color: white; margin-bottom: 1rem; }
+  .contact .section-sub { color: rgba(255,255,255,0.6); margin: 0 auto 2.5rem; }
+  .contact-form { display: grid; gap: 1rem; text-align: left; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-input {
+    width: 100%; padding: 0.85rem 1.1rem; border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.07);
+    color: white; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 300;
+  }
+  .form-input::placeholder { color: rgba(255,255,255,0.35); }
+  .form-input:focus { outline: none; border-color: var(--teal); }
+  select.form-input option { background: var(--charcoal); }
+  .form-submit { background: var(--teal); color: white; border: none; padding: 1rem 2.5rem; border-radius: 50px; font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 500; cursor: pointer; width: 100%; transition: background 0.2s; margin-top: 0.5rem; }
+  .form-submit:hover { background: #0F6E56; }
+
+  footer { background: #1a1a18; color: rgba(255,255,255,0.4); text-align: center; padding: 2rem; font-size: 0.82rem; }
+  footer strong { color: rgba(255,255,255,0.7); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; padding: 3rem 1.5rem; min-height: auto; }
+    .hero::before { display: none; }
+    .why { grid-template-columns: 1fr; gap: 2.5rem; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 3.5rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">get<span>cleanr</span></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why us</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get a quote</button>
+</nav>
+
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-badge">Calgary's trusted cleaning service</div>
+    <h1>A cleaner space,<br>a <em>better</em> day.</h1>
+    <p>Professional residential and commercial cleaning in Calgary. We handle the mess so you can focus on what matters.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Book a clean</button>
+      <button class="btn-secondary" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">See services</button>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card-main">
+      <div class="hero-img-placeholder">
+        <span class="sparkle">✨</span>
+      </div>
+      <div class="hero-card-label">Latest booking</div>
+      <div class="hero-card-title">Deep Clean — Beltline Condo</div>
+      <div class="hero-card-sub">Completed today · Calgary, AB</div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num">200+</div><div class="stat-label">Happy clients</div></div>
+        <div class="stat"><div class="stat-num">5★</div><div class="stat-label">Avg rating</div></div>
+        <div class="stat"><div class="stat-num">3 yr</div><div class="stat-label">In business</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-strip">
+  <div class="trust-item"><strong>✓ Insured & bonded</strong></div>
+  <div class="trust-item"><strong>✓ Eco-friendly products</strong></div>
+  <div class="trust-item"><strong>✓ Flexible scheduling</strong></div>
+  <div class="trust-item"><strong>✓ Satisfaction guaranteed</strong></div>
+</div>
+
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="services-header">
+      <div class="section-tag">What we do</div>
+      <h2>Cleaning for every space</h2>
+      <p class="section-sub">Whether it's your home or your business, we bring the same attention to detail every time.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">🏠</span>
+        <h3>Residential cleaning</h3>
+        <p>Regular maintenance cleans, deep cleans, and move-in/move-out service for homes and apartments across Calgary.</p>
+        <span class="service-tag">Homes & condos</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🏢</span>
+        <h3>Commercial cleaning</h3>
+        <p>Office spaces, retail stores, and commercial properties kept spotless — on your schedule, not ours.</p>
+        <span class="service-tag">Offices & retail</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🧹</span>
+        <h3>Deep cleaning</h3>
+        <p>A thorough top-to-bottom clean for spaces that need extra love. Perfect before special events or seasonal refreshes.</p>
+        <span class="service-tag">One-time & seasonal</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">📦</span>
+        <h3>Move-in / move-out</h3>
+        <p>Start fresh or leave a great impression. We make sure the space is spotless for whoever comes next.</p>
+        <span class="service-tag">Real estate & rentals</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="why">
+    <div>
+      <div class="section-tag">Why Getcleanr</div>
+      <h2>We're not just a cleaning service</h2>
+      <p class="section-sub">We care about your space like it's our own.</p>
+      <ul class="why-list">
+        <li class="why-item">
+          <div class="why-dot">1</div>
+          <div class="why-text"><h4>Vetted, trained cleaners</h4><p>Every cleaner is background-checked and trained to our standards.</p></div>
+        </li>
+        <li class="why-item">
+          <div class="why-dot">2</div>
+          <div class="why-text"><h4>Eco-friendly by default</h4><p>We use non-toxic, safe products — better for your family and the planet.</p></div>
+        </li>
+        <li class="why-item">
+          <div class="why-dot">3</div>
+          <div class="why-text"><h4>Easy booking & communication</h4><p>Book in minutes, get reminders, and reach us any time.</p></div>
+        </li>
+        <li class="why-item">
+          <div class="why-dot">4</div>
+          <div class="why-text"><h4>Satisfaction guarantee</h4><p>Not happy? We'll come back and make it right — no questions asked.</p></div>
+        </li>
+      </ul>
+    </div>
+    <div class="why-visual">
+      <div class="why-visual-title">What our clients say</div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Getcleanr transformed our office. The team was professional, thorough, and so easy to communicate with. Highly recommend."</div>
+        <div class="review-name">— Sarah M., NW Calgary</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Used them for a move-out clean and my landlord was blown away. Got my full deposit back. Worth every penny."</div>
+        <div class="review-name">— Jordan T., Beltline</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="pricing-inner">
+    <div class="pricing-header">
+      <div class="section-tag">Pricing</div>
+      <h2>Simple, transparent pricing</h2>
+      <p class="section-sub" style="margin:0 auto;">No hidden fees. Pick what works for you.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="plan-name">Basic</div>
+        <div class="plan-price">$99<span>/visit</span></div>
+        <div class="plan-desc">Great for regular maintenance</div>
+        <ul class="plan-features">
+          <li>Kitchen & bathrooms</li>
+          <li>Vacuuming & mopping</li>
+          <li>Dusting surfaces</li>
+          <li>Up to 2 bedrooms</li>
+        </ul>
+        <button class="plan-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Book now</button>
+      </div>
+      <div class="pricing-card featured">
+        <span class="featured-badge">Most popular</span>
+        <div class="plan-name">Standard</div>
+        <div class="plan-price">$179<span>/visit</span></div>
+        <div class="plan-desc">Our most popular package</div>
+        <ul class="plan-features">
+          <li>Everything in Basic</li>
+          <li>Inside appliances</li>
+          <li>Window sills & blinds</li>
+          <li>Up to 4 bedrooms</li>
+          <li>Priority scheduling</li>
+        </ul>
+        <button class="plan-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Book now</button>
+      </div>
+      <div class="pricing-card">
+        <div class="plan-name">Commercial</div>
+        <div class="plan-price">Custom</div>
+        <div class="plan-desc">Tailored for your business</div>
+        <ul class="plan-features">
+          <li>All areas covered</li>
+          <li>Flexible scheduling</li>
+          <li>Recurring contracts</li>
+          <li>Dedicated team</li>
+          <li>Invoice billing</li>
+        </ul>
+        <button class="plan-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get a quote</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="section-tag" style="color: #5DCAA5;">Get in touch</div>
+    <h2>Ready for a cleaner space?</h2>
+    <p class="section-sub">Fill out the form and we'll get back to you within 24 hours with a custom quote.</p>
+    <div class="contact-form">
+      <div class="form-row">
+        <input class="form-input" type="text" placeholder="Your name">
+        <input class="form-input" type="email" placeholder="Email address">
+      </div>
+      <div class="form-row">
+        <input class="form-input" type="tel" placeholder="Phone number">
+        <select class="form-input">
+          <option value="" disabled selected>Type of service</option>
+          <option>Residential – Basic</option>
+          <option>Residential – Standard</option>
+          <option>Deep clean</option>
+          <option>Move-in / Move-out</option>
+          <option>Commercial</option>
+        </select>
+      </div>
+      <textarea class="form-input" rows="4" placeholder="Tell us about your space (size, frequency, any specific needs...)"></textarea>
+      <button class="form-submit">Send my request →</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <strong>Getcleanr</strong> · Calgary, Alberta · © 2026 · All rights reserved
+</footer>
+
+</body>
+</html>
