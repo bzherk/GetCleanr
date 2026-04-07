@@ -880,79 +880,81 @@
       <p class="section-sub">This form is already wired for Web3Forms. Leave your access key in place, submit a test inquiry after every major edit, and you have a simple working lead pipeline.</p>
     </div>
 
-Update the contact/quote form section in my `index.html` to improve professionalism and remove any developer-facing or platform-related text.
+<form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value="82939cad-c95d-423d-b3a6-6d3cef311908">
+  <input type="hidden" name="subject" value="New quote request from getcleanr.ca">
+  <input type="hidden" name="from_name" value="Getcleanr Website">
+  <input type="checkbox" name="botcheck" style="display:none;">
 
-IMPORTANT:
-- Keep Web3Forms functionality fully intact
-- Do NOT remove or modify hidden inputs (access_key, subject, from_name, botcheck)
-- Do NOT change field name attributes
-- Do NOT break form submission
+  <div class="form-row">
+    <input class="form-input" type="text" name="name" placeholder="Your name" required>
+    <input class="form-input" type="email" name="email" placeholder="Email address" required>
+  </div>
 
-1. REMOVE WEB3FORMS ADVERTISEMENT TEXT
+  <div class="form-row">
+    <input class="form-input" type="tel" name="phone" placeholder="Phone number">
+    <select class="form-input" name="service" required>
+      <option value="" disabled selected>Type of service</option>
+      <option>Recurring home cleaning</option>
+      <option>Deep cleaning</option>
+      <option>Move-in / Move-out</option>
+      <option>Commercial cleaning</option>
+    </select>
+  </div>
 
-Remove this paragraph entirely:
-"This form is already wired for Web3Forms. Leave your access key in place, submit a test inquiry after every major edit, and you have a simple working lead pipeline."
+  <div class="form-row">
+    <select class="form-input" name="bedrooms">
+      <option value="" disabled selected>Bedrooms</option>
+      <option>Studio</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4+</option>
+    </select>
+    <select class="form-input" name="bathrooms">
+      <option value="" disabled selected>Bathrooms</option>
+      <option>1</option>
+      <option>1.5</option>
+      <option>2</option>
+      <option>3+</option>
+    </select>
+  </div>
 
-Replace it with customer-facing copy:
-"Tell us a bit about your space and we’ll send you a custom quote."
+  <div class="form-row">
+    <select class="form-input" name="square_footage">
+      <option value="" disabled selected>Approx. square footage</option>
+      <option>Under 1,000 sq ft</option>
+      <option>1,000–1,500 sq ft</option>
+      <option>1,500–2,000 sq ft</option>
+      <option>2,000–3,000 sq ft</option>
+      <option>3,000+ sq ft</option>
+    </select>
+    <input class="form-input" type="date" name="preferred_date" aria-label="Preferred date">
+  </div>
 
-2. CLEAN UP FIELD WORDING
+  <div class="form-row">
+    <select class="form-input" name="pets">
+      <option value="" disabled selected>Pets</option>
+      <option>None</option>
+      <option>Dog(s)</option>
+      <option>Cat(s)</option>
+      <option>Multiple pets</option>
+    </select>
+    <select class="form-input" name="lead_source">
+      <option value="" disabled selected>How did you find us?</option>
+      <option>Google</option>
+      <option>Referral</option>
+      <option>Facebook</option>
+      <option>Instagram</option>
+      <option>Other</option>
+    </select>
+  </div>
 
-Update labels/placeholders to be shorter and more professional:
+  <textarea class="form-input" rows="5" name="message" placeholder="Tell us about your space and what kind of cleaning you need." required></textarea>
 
-- "Number of bedrooms" → "Bedrooms"
-- "Number of bathrooms" → "Bathrooms"
-- "Square footage range" → "Approx. square footage"
-- "Pets in the home" → "Pets"
-- "How did you hear about us" → "How did you find us?"
+  <button class="form-submit" type="submit">Send my quote request</button>
+</form>
 
-3. UPDATE DROPDOWN OPTIONS
-
-Square footage:
-- Under 1,000 sq ft
-- 1,000–1,500 sq ft
-- 1,500–2,000 sq ft
-- 2,000–3,000 sq ft
-- 3,000+ sq ft
-
-Pets:
-- None
-- Dog(s)
-- Cat(s)
-- Multiple pets
-
-Lead source:
-- Google
-- Referral
-- Facebook
-- Instagram
-- Other
-
-4. IMPROVE DATE FIELD UX
-
-Ensure the date field has a clear label or improved placeholder such as:
-"Preferred date"
-
-Avoid raw "yyyy-mm-dd" feeling unstyled.
-
-5. KEEP FORM CLEAN AND PREMIUM
-
-- Maintain existing layout and styling
-- Keep 2-column layout on desktop
-- Keep mobile responsive
-- Do not add extra clutter or instructions
-- Form should feel simple, fast, and professional
-
-6. REMOVE ANY OTHER INTERNAL OR DEVELOPER TEXT
-
-Scan the section and remove anything that:
-- mentions tools/platforms
-- sounds like instructions
-- explains implementation
-
-The page should only speak to customers.
-
-Return ONLY the updated form section.
 
 
     <div class="contact-note">Email inquiries can also go to info@getcleanr.ca.</div>
