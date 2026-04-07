@@ -575,9 +575,23 @@
   }
 
   .form-input::placeholder { color: rgba(255, 255, 255, 0.42); }
-  .form-input:focus { outline: none; border-color: #7DE5C0; }
-  select.form-input option { background: var(--charcoal); color: var(--white); }
+.form-input:focus { outline: none; border-color: #7DE5C0; }
+select.form-input option { background: var(--charcoal); color: var(--white); }
 
+input[type="date"].form-input {
+  appearance: none;
+  -webkit-appearance: none;
+  min-height: 52px;
+}
+
+input[type="date"].form-input::-webkit-date-and-time-value {
+  text-align: left;
+}
+
+input[type="date"].form-input::-webkit-calendar-picker-indicator {
+  opacity: 0.85;
+  cursor: pointer;
+}
   .form-submit {
     width: 100%;
     padding: 1rem 1.4rem;
@@ -623,26 +637,31 @@
   }
 
   @media (max-width: 768px) {
-    nav,
-    section,
-    .hero {
-      padding-left: 1.4rem;
-      padding-right: 1.4rem;
-    }
-
-    nav { padding-top: 0.9rem; padding-bottom: 0.9rem; }
-    .nav-links { display: none; }
-    .hero { padding-top: 3rem; min-height: auto; }
-    .hero-panel { padding: 1rem; }
-    .panel-grid,
-    .checklist-group,
-    .form-row,
-    .services-grid,
-    .reasons-grid {
-      grid-template-columns: 1fr;
-    }
-    .topbar { font-size: 0.78rem; }
+  nav,
+  section,
+  .hero {
+    padding-left: 1.4rem;
+    padding-right: 1.4rem;
   }
+
+  nav { padding-top: 0.9rem; padding-bottom: 0.9rem; }
+  .nav-links { display: none; }
+  .hero { padding-top: 3rem; min-height: auto; }
+  .hero-panel { padding: 1rem; }
+  .panel-grid,
+  .checklist-group,
+  .form-row,
+  .services-grid,
+  .reasons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  input[type="date"].form-input {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .topbar { font-size: 0.78rem; }
 </style>
 </head>
 <body>
