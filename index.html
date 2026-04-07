@@ -49,36 +49,38 @@
     letter-spacing: 0.01em;
   }
 
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 2.5rem;
-    background: rgba(248, 244, 237, 0.90);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-  }
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 2.5rem;
+  background: rgba(248, 244, 237, 0.90);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
 
 .logo {
   display: flex;
   align-items: center;
 }
 
+.logo a {
+  display: flex;
+  align-items: center;
+}
+
 .logo img {
-  display: block;
-  height: 46px;
+  height: 68px;
   width: auto;
-  max-width: 220px;
-  object-fit: contain;
+  display: block;
 }
 
 @media (max-width: 768px) {
   .logo img {
-    height: 42px;
-    max-width: 180px;
+    height: 52px;
   }
 }
   .nav-links {
@@ -681,8 +683,10 @@
 
 <nav>
   <div class="logo">
-  <img src="getcleanr-logo.png" alt="Getcleanr logo">
-</div>
+    <a href="#">
+      <img src="getcleanr-logo-header-tight.png" alt="Getcleanr logo">
+    </a>
+  </div>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#included">What's included</a></li>
