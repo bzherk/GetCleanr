@@ -62,16 +62,25 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   }
 
-  .logo {
-    font-family: "Fraunces", serif;
-    font-size: 1.55rem;
-    font-weight: 700;
-    color: var(--teal-dark);
-    letter-spacing: -0.03em;
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  display: block;
+  height: 46px;
+  width: auto;
+  max-width: 220px;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .logo img {
+    height: 42px;
+    max-width: 180px;
   }
-
-  .logo span { color: var(--teal); }
-
+}
   .nav-links {
     display: flex;
     list-style: none;
@@ -671,7 +680,9 @@
 <div class="topbar">Serving Calgary, Alberta including downtown, NW, SW, SE, and surrounding areas.</div>
 
 <nav>
-  <div class="logo">get<span>cleanr</span></div>
+  <div class="logo">
+  <img src="getcleanr-logo.png" alt="Getcleanr logo">
+</div>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#included">What's included</a></li>
